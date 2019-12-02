@@ -1,4 +1,4 @@
-<center># Advent of Code </center>
+# <center> Advent of Code </center>
 
 This repository is for the purpose of storing the questions and my solutions for the Advent of Code challenges provided by Eric Wastl at https://adventofcode.com/
 
