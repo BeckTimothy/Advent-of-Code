@@ -5,19 +5,33 @@ puzzleInput[2] = 2;
 
 let testInput;
 
-function opcode(arr) {
+function intcode(arr) {
+
 	for(let i = 0; i < arr.length - 1; i) {
-		if(arr[i] === 1){
-			arr[arr[i+3]] = arr[arr[i+1]] + arr[arr[i+2]];
-			i = i + 4;
-		}else if(arr[i] === 2) {
-			arr[arr[i+3]] = arr[arr[i+1]] * arr[arr[i+2]];
-			i = i + 4;
-		}else if(arr[i] === 99) {
-			i = arr.length;
+		//name redundant variables to make code easily read by humans
+		let opcodeAddress = arr[i];
+		let opcodeValueOne = arr[arr[i+1]];
+		let opcodeValueTwo = arr[arr[i+2]];
+		let opcodeTarget = arr[arr[i+3]];
+		let nextOpcode = i + 4;
+		let intcodeComplete = arr.length;
+		//intcode logic - if opcode address is a value determining action, do said action
+		//if address is one, add designated values in the next two positions or the array
+		//apply the returned value to the position designated by the value of the 4th position in each intcode
+		if(opcodeAddress === 1){
+			arr[arr[i+3]] = opcodeValueOne + opcodeValueTwo;
+			i = nextOpcode;
+		}else if(opcodeAddress === 2) {
+			//if address is two, multiply designated values in the next two positions or the array
+			//apply the returned value to the position designated by the value of the 4th position in each intcode
+			arr[arr[i+3]] = opcodeValueOne * opcodeValueTwo;
+			i = nextOpcode;
+		}else if(opcodeAddress === 99) {
+			//if address is 99, intcode program is complete
+			i = intcodeComplete;
 			return `value at pos 0: ${arr[0]}`
 		}else{return "Error invalid input";}
 	}
 }
 
-console.log(opcode(puzzleInput));
+console.log(intcode(puzzleInput));
