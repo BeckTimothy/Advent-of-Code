@@ -1,7 +1,7 @@
 /**
  * This is challenge 1 of 2019-12-02 of Advent of Code's 25-day challenge
  *
- * @param arr intcode dataset
+ * @param arr array intcode dataset
  * @returns {string} containing the value at position 0 of array when intcode program finishes
  * @author Timothy Beck <Dev@TimothyBeck.com>
  */
