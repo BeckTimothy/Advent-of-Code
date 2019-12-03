@@ -1,6 +1,6 @@
 /**
  * This is challenge 1 of 2019-12-03 of Advent of Code's 25-day challenge
- * This answer is excruciatingly inefficient. I need to study Taxicab Geometry and return to improve it
+ * This answer is excruciatingly inefficient. I need to study Maps and return to improve it
  *
  * @param wireOne array describing the route first wire takes from a center point
  * @param wireTwo array describing the route second wire takes from a center point
