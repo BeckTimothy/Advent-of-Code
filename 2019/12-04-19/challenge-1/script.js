@@ -4,7 +4,7 @@
  *
  * @param {number} lowerValue
  * @param {number} higherValue
- * @returns int
+ * @returns int number of integers that meet certain requirements in a range
  * @author Timothy Beck <Dev@TimothyBeck.com>
  */
 
