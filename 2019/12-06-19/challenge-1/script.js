@@ -17,19 +17,6 @@ function orbitCalc(arr) {
 	arr.forEach(item => planetList.push(item.slice(0, 3)));
 	arr.forEach(item => satelliteList.push(item.slice(-3, item.length)));
 
-	//forloop find all of our end points
-	// for (i = 0; i < satelliteList.length; i++) {
-	// 	let count = 0;
-	// 	for(j = 0; j < satelliteList.length; j++) {
-	// 		if(planetList[j] === satelliteList[i]) {
-	// 			count++;
-	// 		}
-	// 		if(j === planetList.length - 1 && count === 0) {
-	// 			endpoints.push(satelliteList[i]);
-	// 		}
-	// 	}
-	// }
-	//
 	for (i = 0; i < satelliteList.length; i++) {
 		let emptyArr = [];
 		paths.push(emptyArr);
@@ -48,7 +35,7 @@ function orbitCalc(arr) {
 			totalOrbits++
 		}
 	}
-	console.log(totalOrbits);
+	return totalOrbits;
 }
 
 
@@ -1634,4 +1621,4 @@ const input = "2YQ)3JS\n" +
 	"M2K)4HD";
 let puzzleInput = input.split("\n");
 //console.log(puzzleInput);
-orbitCalc(puzzleInput);
+console.log(orbitCalc(puzzleInput));
