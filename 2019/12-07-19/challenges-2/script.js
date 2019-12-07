@@ -15,10 +15,23 @@ function bruteCircuit(arr) {
 						if(a === b || a === c || a === d || a === e || b === c || b === d || b === e || c === d || c === e || d === e) {
 							continue;
 						}
-						console.log(`Thruster output: ${thruster} with Sequence: a = ${a}, b = ${b}, c = ${c}, d = ${d}, e = ${e}`);
-						if(ampCircuit(arr, a, b, c, d, e) > thruster) {
-							thruster = ampCircuit(arr, a, b, c, d, e);
-							sequence = `Sequence: a = ${a}, b = ${b}, c = ${c}, d = ${d}, e = ${e}`;
+						for(f = 5; f <= 9; f++){
+							for(g = 5; g <= 9; g++){
+								for(h = 5; h <= 9; h++){
+									for(k = 5; k <= 9; k++){
+										for(l = 5; l <= 9; l++){
+											if(f === g || f === h || f === k || f === l || g === h || g === k || g === l || h === k || h === l || k === l) {
+												continue;
+											}
+											console.log(`Thruster output: ${thruster} with Sequence:  a = ${a}, b = ${b}, c = ${c}, d = ${d}, e = ${e}, f = ${f}, g = ${g}, h = ${h}, k = ${k}, l = ${l}`);
+											if(ampCircuitExtended(arr, a, b, c, d, e, f, g, h, k, l) > thruster) {
+												thruster = ampCircuitExtended(arr, a, b, c, d, e, f, g, h, k, l);
+												sequence = `Sequence: a = ${a}, b = ${b}, c = ${c}, d = ${d}, e = ${e}, f = ${f}, g = ${g}, h = ${h}, k = ${k}, l = ${l}`;
+											}
+										}
+									}
+								}
+							}
 						}
 					}
 				}
@@ -28,20 +41,30 @@ function bruteCircuit(arr) {
 	return `Thruster output: ${thruster} with ` + sequence;
 }
 
-function ampCircuit(arr, a, b, c, d, e) {
+function ampCircuitExtended(arr, a, b, c, d, e, f, g, h, k, l) {
 	let ins1 = arr;
 	let ins2 = arr;
 	let ins3 = arr;
 	let ins4 = arr;
 	let ins5 = arr;
+	let ins6 = arr;
+	let ins7 = arr;
+	let ins8 = arr;
+	let ins9 = arr;
+	let ins0 = arr;
 
 	const ampA = intcode(ins1, a, 0);
 	const ampB = intcode(ins2, b, ampA);
 	const ampC = intcode(ins3, c, ampB);
 	const ampD = intcode(ins4, d, ampC);
 	const ampE = intcode(ins5, e, ampD);
-	console.log(ampA, ampB, ampC, ampD, ampE);
-	return ampE;
+	const ampF = intcode(ins6, f, ampE);
+	const ampG = intcode(ins7, g, ampF);
+	const ampH = intcode(ins8, h, ampG);
+	const ampK = intcode(ins9, k, ampH);
+	const ampL = intcode(ins0, l, ampK);
+
+	return ampL;
 }
 
 function intcode(arr, phaseSetting, input) {
