@@ -106,8 +106,7 @@ function intcode(arr, phaseSetting, input) {
 			arr[arr[i + 3]] = opcodeValueOne * opcodeValueTwo;
 			i = nextOpcode;
 		} else if(opcodeAddress === 99) {
-			//if address is 99, intcode program is complete
-			//console.log(`i = ${i} and arr[0] = ${arr[0]} at the end of the loop`);
+			console.log(`i = ${i} and arr[0] = ${arr[0]} at the end of the loop`);
 			i = intcodeComplete;
 			return `value at pos 0: ${arr[0]}`;
 		} else if(opcodeAddress === 3) {
