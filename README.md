@@ -14,4 +14,7 @@ For more information please see: https://adventofcode.com/2019/about
 | [Day 3](https://adventofcode.com/2019/day/3) | :star::star: | [Javascript](https://github.com/BeckTimothy/Advent-of-Code/blob/master/2019/12-03-19/challenge-1/script.js) | [Javascript](https://github.com/BeckTimothy/Advent-of-Code/blob/master/2019/12-03-19/challenge-2/script.js) |  |
 | [Day 4](https://adventofcode.com/2019/day/4) | :star::star: | [Javascript](https://github.com/BeckTimothy/Advent-of-Code/blob/master/2019/12-04-19/challenge-1/script.js) | [Javascript](https://github.com/BeckTimothy/Advent-of-Code/blob/master/2019/12-04-19/challenge-2/script.js) |  |
 | [Day 5](https://adventofcode.com/2019/day/5) | :star::star: | [Javascript](https://github.com/BeckTimothy/Advent-of-Code/blob/master/2019/12-05-19/challenge-1/script.js) | [Javascript](https://github.com/BeckTimothy/Advent-of-Code/blob/master/2019/12-05-19/challenge-2/script.js) |  |
-| [Day 6](https://adventofcode.com/2019/day/6) |  |  |  |  |
+| [Day 6](https://adventofcode.com/2019/day/6) | :star::star: | [Javascript](https://github.com/BeckTimothy/Advent-of-Code/blob/master/2019/12-06-19/challenge-1/script.js) | [Javascript](https://github.com/BeckTimothy/Advent-of-Code/blob/master/2019/12-06-19/challenge-2/script.js) |  |
+| [Day 7](https://adventofcode.com/2019/day/7) |  |  |  |  |
+| [Day 8](https://adventofcode.com/2019/day/8) |  |  |  |  |
+| [Day 9](https://adventofcode.com/2019/day/9) |  |  |  |  |
