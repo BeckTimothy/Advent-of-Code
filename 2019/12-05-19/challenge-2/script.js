@@ -9,8 +9,8 @@ function intcode(arr) {
 	//arr[1] = noun;
 	//arr[2] = verb;
 
-	for(let i = 0; i <= arr.length - 1; i) {
-		console.log(i);
+	for(let i = 0; i < arr.length - 1; i) {
+		//console.log(i);
 		//console.log(`i = ${i} and last value = ${Number(arr[i].toString().charAt(arr[i].toString().length - 1))}`);
 		let opcodeValueOne = arr[arr[i + 1]];
 		let opcodeValueTwo = arr[arr[i + 2]];
@@ -63,11 +63,10 @@ function intcode(arr) {
 		} else if(opcodeAddress === 4) {
 			//logs the parameter
 			if(opParamHund === 1) {
-				console.log(`diagnostic code: ${arr[i + 1]}`);
+				return `diagnostic code: ${arr[i + 1]}`;
 			} else {
-				console.log(`diagnostic code: ${arr[arr[i + 1]]}`);
+				return `diagnostic code: ${arr[arr[i + 1]]}`;
 			}
-			i = i + 2;
 		} else if(opcodeAddress === 5) {
 			//logs the parameter
 			if(opcodeValueOne !== 0) {
