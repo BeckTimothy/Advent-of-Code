@@ -1,5 +1,5 @@
 /**
- * This is challenge 1 of 2019-12-07 of Advent of Code's 25-day challenge
+ * This is challenge 2 of 2019-12-07 of Advent of Code's 25-day challenge
  * See the readme for an explanation
  *
  * @author Timothy Beck <Dev@TimothyBeck.com>
@@ -12,15 +12,12 @@ function bruteCircuit(arr) {
 			for(c = 0; c <= 4; c++) {
 				for(d = 0; d <= 4; d++) {
 					for(e = 0; e <= 4; e++) {
-						if(a === b || a === c || a === d || a === e || b === c || b === d || b === e || c === d || c === e || d === e) {
-							continue;
-						}
 						for(f = 5; f <= 9; f++){
 							for(g = 5; g <= 9; g++){
 								for(h = 5; h <= 9; h++){
 									for(k = 5; k <= 9; k++){
 										for(l = 5; l <= 9; l++){
-											if(f === g || f === h || f === k || f === l || g === h || g === k || g === l || h === k || h === l || k === l) {
+											if(a === b || a === c || a === d || a === e || b === c || b === d || b === e || c === d || c === e || d === e || f === g || f === h || f === k || f === l || g === h || g === k || g === l || h === k || h === l || k === l) {
 												continue;
 											}
 											console.log(`Thruster output: ${thruster} with Sequence:  a = ${a}, b = ${b}, c = ${c}, d = ${d}, e = ${e}, f = ${f}, g = ${g}, h = ${h}, k = ${k}, l = ${l}`);
