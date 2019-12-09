@@ -4,6 +4,7 @@
  *
  * @param arr array containing the intcode instructions
  * @param input integer that modifies the output
+ * @return integer output of intcode program
  * @author Timothy Beck <Dev@TimothyBeck.com>
  */
 
@@ -12,7 +13,7 @@ function intcodeProgram(arr, input) {
 	//relative base is a variable modified by parameter mode: relative mode.
 	let relativeBase = 0;
 	for(let i = 0; i <= arr.length - 1; i) {
-		
+
 		//opcode parameters are parameters for the opcode Instruction,
 		let opcodeParamOne = arr[arr[i + 1]];
 		let opcodeParamTwo = arr[arr[i + 2]];
