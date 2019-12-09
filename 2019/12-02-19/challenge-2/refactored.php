@@ -23,10 +23,10 @@ function bruteIntcode($array) {
 				//answer is the puzzles answer obtained by multiplying 100 and the noun, added to the verb if they output our target
 				$answer = (100 * $noun) + $verb;
 				return "Answer 19690720 was found with verb $verb and noun $noun, true answer is: $answer";
-				}
 			}
 		}
 	}
+}
 
 
 function intcodeProgram($array, $noun, $verb) {
