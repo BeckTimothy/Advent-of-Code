@@ -1,5 +1,11 @@
 <?php
-
+/**
+ * This is challenge 1 of 2019-12-02 of Advent of Code's 25-day challenge done in PHP.
+ *
+ * @param array intcode dataset
+ * @returns {string} containing the value at position 0 of array when intcode program finishes
+ * @author Timothy Beck <Dev@TimothyBeck.com>
+ */
 function intcodeProgram($array) {
 	for($i = 0; $i < count($array);) {
 		$opcodeAddress = $array[$i];
