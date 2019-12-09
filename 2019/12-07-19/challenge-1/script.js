@@ -1,9 +1,9 @@
 /**
- * This is challenge 1 of 2019-12-07 of Advent of Code's 25-day challenge
- * See the readme for an explanation
- *
- * @author Timothy Beck <Dev@TimothyBeck.com>
- */
+* This is challenge 1 of 2019-12-07 of Advent of Code's 25-day challenge
+* See the readme for an explanation
+*
+* @author Timothy Beck <Dev@TimothyBeck.com>
+*/
 function bruteCircuit(arr) {
 	let thruster = 0;
 	let sequence = "";
