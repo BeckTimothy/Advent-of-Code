@@ -31,7 +31,7 @@ function intcode(arr, phaseSetting, input) {
 			opcodeValueOne = arr[i + 1];
 		}else if(opParamHund === 2) {
 			//relative mode
-			opcodeValueOne = arr[arr[i + 1 + relativeBase]];
+			opcodeValueOne = arr[relativeBase + arr[i + 1]];
 		}else{
 			//position mode
 				opcodeValueOne = arr[arr[i + 1]];
@@ -42,7 +42,7 @@ function intcode(arr, phaseSetting, input) {
 			opcodeValueTwo = arr[i + 2];
 		}else if(opParamThou === 2) {
 			//relative mode
-			opcodeValueTwo = arr[arr[relativeBase + i + 2]];
+			opcodeValueTwo = arr[relativeBase +  arr[i + 2]];
 		}else {
 			//position mode
 			opcodeValueTwo = arr[arr[i + 2]];
@@ -53,14 +53,14 @@ function intcode(arr, phaseSetting, input) {
 		//apply the returned value to the position designated by the value of the 4th position in each intcode
 		if(opcodeAddress === 1) {
 			if(opParamTenThou === 2) {
-				arr[arr[relativeBase + i + 3]] = opcodeValueOne + opcodeValueTwo;
+				arr[relativeBase + arr[i + 3]] = opcodeValueOne + opcodeValueTwo;
 			} else{
 				arr[arr[i + 3]] = opcodeValueOne + opcodeValueTwo;
 			}
 			i = nextOpcode;
 		} else if(opcodeAddress === 2) {
 			if(opParamTenThou === 2) {
-				arr[arr[relativeBase + i + 3]] = opcodeValueOne * opcodeValueTwo;
+				arr[relativeBase + arr[i + 3]] = opcodeValueOne * opcodeValueTwo;
 			} else{
 				arr[arr[i + 3]] = opcodeValueOne * opcodeValueTwo;
 			}
@@ -81,10 +81,10 @@ function intcode(arr, phaseSetting, input) {
 				}
 			} else if(opParamHund === 2) {
 				if(phaseCount === 0){
-					arr[arr[relativeBase + i + 1]] = phaseSetting;
+					arr[relativeBase + arr[i + 1]] = phaseSetting;
 					phaseCount = 1;
 				}else{
-					arr[arr[relativeBase + i + 1]] = input
+					arr[relativeBase + arr[i + 1]] = input
 				}
 			} else {
 				if(phaseCount === 0){
@@ -100,7 +100,7 @@ function intcode(arr, phaseSetting, input) {
 			if(opParamHund === 1) {
 				return Number(arr[i + 1]);
 			} else if(opParamHund === 2) {
-				return Number(arr[arr[relativeBase + i + 1]]);
+				return Number(arr[relativeBase +  arr[i + 1]]);
 			} else {
 				return Number(arr[arr[i + 1]]);
 			}
@@ -122,10 +122,10 @@ function intcode(arr, phaseSetting, input) {
 			//logs the parameter
 			if(opParamTenThou === 2) {
 				if(opcodeValueOne < opcodeValueTwo) {
-					arr[arr[relativeBase + i + 3]] = 1;
+					arr[relativeBase +  arr[i + 3]] = 1;
 					i = i + 4;
 				} else {
-					arr[arr[relativeBase + i + 3]] = 0;
+					arr[relativeBase + arr[i + 3]] = 0;
 					i = i + 4;
 				}
 			} else {
@@ -141,10 +141,10 @@ function intcode(arr, phaseSetting, input) {
 			//logs the parameter
 			if(opParamTenThou === 2) {
 				if(opcodeValueOne === opcodeValueTwo) {
-					arr[arr[relativeBase + i + 3]] = 1;
+					arr[relativeBase + arr[i + 3]] = 1;
 					i = i + 4;
 				} else {
-					arr[arr[relativeBase + i + 3]] = 0;
+					arr[relativeBase + arr[i + 3]] = 0;
 					i = i + 4;
 				}
 			} else{
@@ -162,7 +162,7 @@ function intcode(arr, phaseSetting, input) {
 			if(opParamHund === 1) {//
 				relativeBase = relativeBase + arr[i + 1];
 			} else if(opParamHund === 2) {
-				relativeBase = relativeBase + arr[arr[relativeBase + i + 1]];
+				relativeBase = relativeBase + arr[relativeBase + arr[i + 1]];
 			} else {
 				relativeBase = relativeBase + arr[arr[i + 1]];
 			}
@@ -177,7 +177,7 @@ function intcode(arr, phaseSetting, input) {
 testInput = [1102,34915192,34915192,7,4,7,99,0];
 testInput2 = [104,1125899906842624,99];
 testInput3 = [109,1,204,-1,1001,100,1,100,1008,100,16,101,1006,101,0,99];
-//console.log(intcode(testInput,1,1));
+console.log(intcode(testInput3,1,1));
 
 
 
