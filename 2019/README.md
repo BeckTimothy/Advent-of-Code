@@ -1,4 +1,7 @@
 ## Advent of Code - 2019 Challenge Tracker
+
+[<p align="center">(Return to Directory Root)</p>](https://github.com/BeckTimothy/Advent-of-Code/)
+
 | **Docs** |  **Completed** | **Challenge 1** | **Challenge 2** | **Refactored** |
 |:---:|:---------:|:---------:|:---------:|:---------:|
 | [Day 1](https://adventofcode.com/2019/day/1) | :star::star: | [Javascript](https://github.com/BeckTimothy/Advent-of-Code/blob/master/2019/12-01-19/challenge-1/script.js) | [Javascript](https://github.com/BeckTimothy/Advent-of-Code/blob/master/2019/12-01-19/challenge-2/script.js) |  |
@@ -26,6 +29,3 @@
 | [Day 23](https://adventofcode.com/2019/day/23) |  |  |  |  |
 | [Day 24](https://adventofcode.com/2019/day/24) |  |  |  |  |
 | [Day 25](https://adventofcode.com/2019/day/25) |  |  |  |  |
-
-
-[<p align="right">(Return to Directory Root)</p>](https://github.com/BeckTimothy/Advent-of-Code/blob/master)

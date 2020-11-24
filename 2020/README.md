@@ -1,4 +1,7 @@
 ## Advent of Code - 2020 Challenge Tracker
+
+[<p align="center">(Return to Directory Root)</p>](https://github.com/BeckTimothy/Advent-of-Code/)
+
 | **Docs** |  **Completed** | **Challenge 1** | **Challenge 2** | **Refactored** |
 |:---:|:---------:|:---------:|:---------:|:---------:|
 | [Day 1](https://adventofcode.com/2020/day/1) |  |  |  |  |
@@ -27,4 +30,3 @@
 | [Day 24](https://adventofcode.com/2020/day/24) |  |  |  |  |
 | [Day 25](https://adventofcode.com/2020/day/25) |  |  |  |  |
 
-[<p align="right">(Return to Directory Root)</p>](https://github.com/BeckTimothy/Advent-of-Code/blob/master)
