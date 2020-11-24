@@ -1,6 +1,6 @@
 ## Advent of Code - 2019 Challenge Tracker
 
-[<p align="center">(Return to Directory Root)</p>](https://github.com/BeckTimothy/Advent-of-Code/)
+[<p align="right">**(Return to Directory Root)**</p>](https://github.com/BeckTimothy/Advent-of-Code/)
 
 | **Docs** |  **Completed** | **Challenge 1** | **Challenge 2** | **Refactored** |
 |:---:|:---------:|:---------:|:---------:|:---------:|
