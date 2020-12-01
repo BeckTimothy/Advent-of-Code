@@ -4,8 +4,8 @@ let testInput = [1721, 979, 366, 299, 675, 1456];
 /*O(n^3)*/
 function expenseReportTwo(input) {
 	for(let i = 0; i < input.length; i++) {
-		for(let j = 0; j < input.length; j++) {
-			for(let k = 0; k < input.length; k++) {
+		for(let j = i+1; j < input.length; j++) {
+			for(let k = j+1; k < input.length; k++) {
 				if(2020 - input[i] - input[k] === input[j]) {
 					return (input[i] * input[j] * input[k]);
 				}
@@ -28,7 +28,7 @@ function expenseReportTwoEfficient(input) {
         }
         let hashedTable = hashTable(input);
     for(let i = 0; i < input.length; i++) {
-        for(let j = 0; j < input.length; j++) {
+        for(let j = i+1; j < input.length; j++) {
             let currentVal = (input[j] + input[i] - 2020);
             let k = hashedTable[(0-(hash(currentVal, input)))];
             if( -k === input[j] + input[i] - 2020) {
@@ -36,6 +36,18 @@ function expenseReportTwoEfficient(input) {
             }
         }
     }
+}
+
+
+function expenseReportTwoTest(input) {
+	for(let i = 0; i < input.length; i++) {
+		for(let j = i+1; j < input.length; j++) {
+			let needle =  (2020 - input[i] - input[j]);
+			if(input.findIndex(x = (x) => x === needle) !== -1) {
+				return (input[i] * input[j] * needle);
+			}
+		}
+	}
 }
 
 /*O(n^2)*/
@@ -53,10 +65,13 @@ let t0, t1 = 0;
 t0 = Date.now();
 console.log(expenseReportTwo(input)); //this took 11 ms
 t1 = Date.now();
-console.log("Call took " + (t1 - t0) + " milliseconds.");
+console.log("Call expenseReportTwo took " + (t1 - t0) + " milliseconds.");
 t0 = Date.now();
-console.log(expenseReportOne(input));
 console.log(expenseReportTwoEfficient(input)); //this took 5 ms
 t1 = Date.now();
-console.log("Call took " + (t1 - t0) + " milliseconds.");
+console.log("Call expenseReportTwoEfficient took " + (t1 - t0) + " milliseconds.");
+t0 = Date.now();
+console.log(expenseReportTwoTest(input)); //this took 5 ms
+t1 = Date.now();
+console.log("Call expenseReportTwoTest took " + (t1 - t0) + " milliseconds.");
 
