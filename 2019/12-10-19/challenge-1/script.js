@@ -80,7 +80,6 @@ function b(point1, point2) {
 }
 
 
-
 let test3arr = ["......#.#.",
 "#..#.#....",
 "..#######.",
@@ -152,6 +151,6 @@ let testarr = [
 	"...##"
 ];
 
-console.log(calculateBestAsteroid(puzzleInput));
+console.log(calculateBestAsteroid(testarr));
 
 
