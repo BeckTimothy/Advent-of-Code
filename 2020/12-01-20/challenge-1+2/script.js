@@ -17,7 +17,7 @@ function expenseReportTwo(input) {
 /*O(n^2+n)?*/
 function expenseReportTwoEfficient(input) {
         function hash(value, arr) {
-            return (arr.length * arr.length * value)
+            return (arr.length * value)
         }
         function hashTable(arr) {
             let table = [];
@@ -49,9 +49,12 @@ function expenseReportOne(input) {
 	}
 }
 
-let t0 = Date.now();
+let t0, t1 = 0;
+
+
+t0 = Date.now();
 console.log(expenseReportTwo(input));
-let t1 = Date.now();
+t1 = Date.now();
 console.log("Call took " + (t1 - t0) + " milliseconds.");
 t0 = Date.now();
 console.log(expenseReportTwoEfficient(input));
