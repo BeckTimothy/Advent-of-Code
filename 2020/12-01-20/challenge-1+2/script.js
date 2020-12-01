@@ -43,7 +43,7 @@ function expenseReportOne(input) {
 	for(let i = 0; i < input.length; i++) {
 		for(let j = 0; j < input.length; j++) {
 			if(2020 - input[i] === input[j]) {
-				return (input[i] * input[j] * input[k]);
+				return (input[i] * input[j]);
 			}
 		}
 	}
@@ -55,6 +55,8 @@ console.log(expenseReportTwo(input)); //this took 11 ms
 t1 = Date.now();
 console.log("Call took " + (t1 - t0) + " milliseconds.");
 t0 = Date.now();
+console.log(expenseReportOne(input));
 console.log(expenseReportTwoEfficient(input)); //this took 5 ms
 t1 = Date.now();
 console.log("Call took " + (t1 - t0) + " milliseconds.");
+
