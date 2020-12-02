@@ -1,4 +1,4 @@
-function solve(arr) {
+function solve(input) {
     let answerArr = [];
     for(let i = 0; i < input.length; i++) {
         input[i] = input[i].replace(/\s/gi, "");
