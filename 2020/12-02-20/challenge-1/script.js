@@ -3,8 +3,8 @@ function solve(arr) {
     for(let i = 0; i < input.length; i++) {
         input[i] = input[i].replace(/\s/gi, "");
         //WATCH ME OVERENGINEER THE FUCK OUT OF THIS
-        let valOne = input[i].substr(0, input[i].indexOf("-"));
-        let valTwo = input[i].substr(input[i].indexOf("-") + 1, input[i].indexOf(":") - 2 - input[i].indexOf("-"));
+        let valOne = Number(input[i].substr(0, input[i].indexOf("-")));
+        let valTwo = Number(input[i].substr(input[i].indexOf("-") + 1, input[i].indexOf(":") - 2 - input[i].indexOf("-")));
         let needle = input[i].substr(input[i].indexOf(":") - 1, 1);
         let pass = input[i].substr(input[i].indexOf(":") + 1);
         let re = new RegExp(needle, 'gi');
@@ -14,7 +14,7 @@ function solve(arr) {
         } else {
             count = 0;
         }
-        if (Number(valOne) <= count && count <= Number(valTwo)) {
+        if (valOne <= count && count <= valTwo) {
             answerArr.push(pass);
         }
 

@@ -3,18 +3,19 @@ function solve(input) {
     for (let i = 0; i < input.length; i++) {
         input[i] = input[i].replace(/\s/gi, "");
         //WATCH ME OVERENGINEER THE FUCK OUT OF THIS
-        let valOne = input[i].substr(0, input[i].indexOf("-"));
-        let valTwo = input[i].substr(input[i].indexOf("-") + 1, input[i].indexOf(":") - 2 - input[i].indexOf("-"));
+        let valOne = Number(input[i].substr(0, input[i].indexOf("-")));
+        let valTwo = Number(input[i].substr(input[i].indexOf("-") + 1, input[i].indexOf(":") - 2 - input[i].indexOf("-")));
         let needle = input[i].substr(input[i].indexOf(":") - 1, 1);
         let pass = input[i].substr(input[i].indexOf(":") + 1);
-        let re = new RegExp(needle, 'gi');
-        let count = pass.match(re);
+        let count = pass.match(new RegExp(needle, 'gi'));
         if (count !== null) {
             count = count.length;
         } else {
             count = 0;
         }
-        if ((pass.charAt(Number(valOne) - 1) === needle || pass.charAt(Number(valTwo) - 1) === needle) && (pass.charAt(Number(valOne) - 1) !== pass.charAt(Number(valTwo) - 1))) {
+        let isNeedleAtPosValOne = pass.charAt(valOne - 1) === needle;
+        let isNeedleAtPosValTwo = pass.charAt(valTwo - 1) === needle;
+        if ( ( isNeedleAtPosValOne || isNeedleAtPosValTwo ) && (isNeedleAtPosValOne !== isNeedleAtPosValTwo) ) {
             answerArr.push(pass);
         }
         //console.log(`${pass} contains the needle ${needle} ${typeof count} times, which is between or including ${valOne} and ${valTwo}\nin string: ${input[i]}`);
