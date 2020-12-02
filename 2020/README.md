@@ -4,8 +4,8 @@
 
 | **Docs** |  **Completed** | **Challenge 1** | **Challenge 2** | **Refactored** |
 |:---:|:---------:|:---------:|:---------:|:---------:|
-| [Day 1](https://adventofcode.com/2020/day/1) | :star::star: | [Javascript](https://github.com/BeckTimothy/Advent-of-Code/blob/master/2020/12-01-20/challenges/script.js) | [Javascript](https://github.com/BeckTimothy/Advent-of-Code/blob/master/2020/12-01-20/challenges/script.js | [Javascript](https://github.com/BeckTimothy/Advent-of-Code/blob/master/2020/12-01-20/challenges/script.js |
-| [Day 2](https://adventofcode.com/2020/day/2) |  |  |  |  |
+| [Day 1](https://adventofcode.com/2020/day/1) | :star::star: | [Javascript](https://github.com/BeckTimothy/Advent-of-Code/blob/master/2020/12-01-20/challenges/script.js) | [Javascript](https://github.com/BeckTimothy/Advent-of-Code/blob/master/2020/12-01-20/challenges/script.js) | [Javascript](https://github.com/BeckTimothy/Advent-of-Code/blob/master/2020/12-01-20/challenges/script.js)  |
+| [Day 2](https://adventofcode.com/2020/day/2) | :star::star: | [Javascript](https://github.com/BeckTimothy/Advent-of-Code/blob/master/2020/12-02-20/challenge-1/script.js) | [Javascript](https://github.com/BeckTimothy/Advent-of-Code/blob/master/2020/12-02-20/challenge-2/script.js) |  |
 | [Day 3](https://adventofcode.com/2020/day/3) |  |  |  |  |
 | [Day 4](https://adventofcode.com/2020/day/4) |  |  |  |  |
 | [Day 5](https://adventofcode.com/2020/day/5) |  |  |  |  |
