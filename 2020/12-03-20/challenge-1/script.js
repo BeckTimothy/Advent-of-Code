@@ -3,8 +3,8 @@ let input = fs.readFileSync('./input.txt', {encoding:'utf8', flag:'r'});
 
 function solve(input, rise, run,) {
     input = input.split('\n');
-    let yPos = 0; //input.length;
-    let xPos = 0; //input.length / rise * run;
+    let yPos = 0; 
+    let xPos = 0;
     let treeCount = 0;
     for(yPos;yPos<input.length;yPos = yPos + rise){
         if(input[yPos][xPos] === "#"){
