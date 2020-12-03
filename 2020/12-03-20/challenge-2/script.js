@@ -1,8 +1,6 @@
 const fs = require('fs');
 let input = fs.readFileSync('../challenge-1/input.txt', {encoding:'utf8', flag:'r'});
 
-let test = "..##.......\n#...#...#..\n.#....#..#.\n..#.#...#.#\n.#...##..#.\n..#.##.....\n.#.#.#....#\n.#........#\n#.##...#...\n#...##....#\n.#..#...#.#\n..#.#...#.#\n..#.#...#.#";
-
 function solve(input, rise, run,) {
     input = input.split('\n');
     let yPos = 0; //input.length;
@@ -20,10 +18,10 @@ function solve(input, rise, run,) {
 
 function solveIt(input) {
     let slope1 = solve(input,1,1);
-    let slope2 =solve(input,1,3);
-    let slope3 =solve(input,1,5);
-    let slope4 =solve(input,1,7);
-    let slope5 =solve(input,2,1);
+    let slope2 = solve(input,1,3);
+    let slope3 = solve(input,1,5);
+    let slope4 = solve(input,1,7);
+    let slope5 = solve(input,2,1);
     return slope1*slope2*slope3*slope4*slope5;
 }
 console.log(solveIt(input));
