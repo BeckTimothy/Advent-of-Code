@@ -1,7 +1,14 @@
 const fs = require('fs');
 let input = fs.readFileSync('../challenge-1/input.txt', {encoding: 'utf8', flag: 'r'});
-
-function createPassport(input) {//console.log(input);
+//
+// I want to prepend this script with the fact that I am terribly embarrassed by it.
+// at first I thought, oh hey I should over-engineer this with getters and setters and data validation
+// then about 20 minutes into writing this I was struck with the realization of how much of a workload that would be
+// so enjoy this almost object-oriented complete with setters but no getters and improperly formatted data validation.
+// I also over-used, misused, and abused try blocks.
+// it works tho
+//
+function createPassport(input) {
 	const setHairColor = (hcl) => {
 		//trim
 		hcl = hcl.trim();
@@ -9,7 +16,6 @@ function createPassport(input) {//console.log(input);
 		if(hcl.match(/(#)([a-fA-F0-9]{6})/) === null) {
 			hcl = null;
 		}
-
 		//set
 		if(hcl === null) {
 			return "invalid passport";
@@ -93,8 +99,6 @@ function createPassport(input) {//console.log(input);
 		}
 	};
 	const setHeight = (hgt) => {
-
-
 		//trim
 		try {
 			hgt = hgt.trim();
@@ -117,7 +121,6 @@ function createPassport(input) {//console.log(input);
 			hgt = null;
 		}
 		//set
-
 		if(hgt === null) {
 			return "invalid passport";
 		} else {
@@ -126,7 +129,6 @@ function createPassport(input) {//console.log(input);
 	};
 	const setEyeColor = (ecl) => {
 		//trim
-
 		try {
 			ecl = ecl.trim();
 		} catch {
@@ -152,7 +154,6 @@ function createPassport(input) {//console.log(input);
 				ecl = null;
 		}
 		//set
-
 		if(ecl === null) {
 			return "invalid passport";
 		} else {
@@ -161,7 +162,6 @@ function createPassport(input) {//console.log(input);
 	};
 	const setPassportId = (pid) => {
 		//trim
-
 		try {
 			pid = pid.trim();
 		} catch {
@@ -179,7 +179,6 @@ function createPassport(input) {//console.log(input);
 			pid = null;
 		}
 		//set
-
 		if(pid === null) {
 			return "invalid passport";
 		} else {
@@ -193,7 +192,6 @@ function createPassport(input) {//console.log(input);
 		} catch {
 			cid = null;
 		}
-
 		//validate
 
 		//set
@@ -207,7 +205,6 @@ function createPassport(input) {//console.log(input);
 		input = input.split(/\s/gi);
 		let hcl, byr, cid, ecl, iyr, pid, eyr, hgt = null;
 		for(let j = 0; j < input.length; j++) {
-			//console.log(`i is ${i} and j is ${j} at ${input[j]}\nWhere input:\n${input[i]}`);
 			switch(true) {
 				case (input[j].substr(0, 3) === "hcl"):
 					hcl = input[j].substr(4);
@@ -277,7 +274,6 @@ function createPassport(input) {//console.log(input);
 		} catch(err) {
 			this.hgt = "invalid passport";
 		}
-
 	}
 	return new Passport(input);
 }
@@ -299,6 +295,5 @@ function solve(input) {
 	}
 	return validCount
 }
-
 console.log(solve(input));
 

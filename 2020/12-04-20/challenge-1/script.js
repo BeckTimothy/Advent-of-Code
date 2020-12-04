@@ -1,16 +1,13 @@
 const fs = require('fs');
 let input = fs.readFileSync('./input.txt', {encoding: 'utf8', flag: 'r'});
 
-
 function solve(input) {
 	input = input.split('\n\n');
 	let validCount = 0;
 	for(let i = 0; i < input.length; i++) {
 		input[i] = input[i].split(/\s/gi);
-
 		let hcl, byr, cid, ecl, iyr, pid, eyr, hgt = null;
 		for(let j = 0; j < input[i].length; j++) {
-			//console.log(`i is ${i} and j is ${j} at ${input[i][j]}\nWhere input:\n${input[i]}`);
 			switch(true) {
 				case (input[i][j].substr(0, 3) === "hcl"):
 					hcl = input[i][j].substr(4);
@@ -50,10 +47,7 @@ function solve(input) {
 		) {
 			validCount++
 		}
-		console.log(`\nhcl is ${hcl}, byr is ${byr}, cid is ${cid}, ecl is ${ecl}, iyr is ${iyr}, pid is ${pid}, eyr is ${eyr}, hgt is ${hgt}`);
-		console.log(`Where input:\n${input[i]}`);
 	}
 	return validCount
 }
-
 console.log(solve(input));
