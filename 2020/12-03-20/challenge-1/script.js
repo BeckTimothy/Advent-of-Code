@@ -3,7 +3,7 @@ let input = fs.readFileSync('./input.txt', {encoding:'utf8', flag:'r'});
 
 function solve(input, rise, run,) {
     input = input.split('\n');
-    let yPos = 0; 
+    let yPos = 0;
     let xPos = 0;
     let treeCount = 0;
     for(yPos;yPos<input.length;yPos = yPos + rise){
@@ -15,5 +15,4 @@ function solve(input, rise, run,) {
     }
     return treeCount;
 }
-
 console.log(solve(input,1,3));
