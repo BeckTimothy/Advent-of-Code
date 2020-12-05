@@ -1,8 +1,10 @@
 const fs = require('fs');
 let input = fs.readFileSync('../challenge-1/input.txt', {encoding: 'utf8', flag: 'r'});
 //
-// I want to prepend this script with the fact that I am terribly embarrassed by it.
-//
+// A n object oriented script using Class Passport
+// including a constructor, private attributes, getters and setters, and a validate method
+// the setters don't reject improperly formatted values so private values are kind of redundant
+// 
 // it works tho
 //
 class Passport {
