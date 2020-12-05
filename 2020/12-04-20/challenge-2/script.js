@@ -3,9 +3,6 @@ let input = fs.readFileSync('../challenge-1/input.txt', {encoding: 'utf8', flag:
 //
 // I want to prepend this script with the fact that I am terribly embarrassed by it.
 //
-//
-//
-//
 // it works tho
 //
 class Passport {
@@ -17,7 +14,6 @@ class Passport {
 	#pid; //passportId
 	#eyr; //expirationYear
 	#hgt; //height
-
 	constructor(hcl, byr, cid, ecl, iyr, pid, eyr, hgt) {
 			this.setHairColor(hcl);
 			this.setBirthYear(byr);
@@ -28,16 +24,12 @@ class Passport {
 			this.setExpirationYear(eyr);
 			this.setHeight(hgt);
 	}
-
-
 	setHairColor(hcl) {
 		try{
 			//trim
 			hcl = hcl.trim();
-			//console.log(`\n${hcl}`);
 			//validate
 			if(hcl.match(/(#)([a-fA-F0-9]{6})/) !== null){
-				//console.log(hcl);
 				this.#hcl = hcl;
 			}else{
 				this.#hcl = "invalid";
@@ -150,7 +142,6 @@ class Passport {
 		return this.#ecl;
 	}
 	setPassportId(pid) {
-
 		//trim
 		try {
 			pid = pid.trim();
@@ -214,10 +205,8 @@ class Passport {
 function solve(input) {
 	input = input.toString().split('\n\r\n');
 	let validCount = 0;
-
 	for(let i = 0; i < input.length; i++) {
 		input[i] = input[i].split(/\s/gi);
-
 		let hcl, byr, cid, ecl, iyr, pid, eyr, hgt = null;
 		for(let j = 0; j < input[i].length; j++) {
 			//console.log(input[i][j].substr(0, 3));
@@ -255,7 +244,7 @@ function solve(input) {
 			if(input[i].validate()){
 				validCount++;
 			}
-		}catch (err) {
+		}catch {
 			//console.log('Invalid');
 		}
 	}
