@@ -2,295 +2,261 @@ const fs = require('fs');
 let input = fs.readFileSync('../challenge-1/input.txt', {encoding: 'utf8', flag: 'r'});
 //
 // I want to prepend this script with the fact that I am terribly embarrassed by it.
-// at first I thought, oh hey I should over-engineer this with getters and setters and data validation
-// then about 20 minutes into writing this I was struck with the realization of how much of a workload that would be
-// so enjoy this almost object-oriented complete with setters but no getters and improperly formatted data validation.
-// I also over-used, misused, and abused try blocks.
+//
+//
+//
+//
 // it works tho
 //
-function createPassport(input) {
-	const setHairColor = (hcl) => {
-		//trim
-		hcl = hcl.trim();
-		//validate
-		if(hcl.match(/(#)([a-fA-F0-9]{6})/) === null) {
-			hcl = null;
+class Passport {
+	#hcl; //hairColor
+	#byr; //birthYear
+	#cid; //countryId
+	#ecl; //eyeColor
+	#iyr; //issueYear
+	#pid; //passportId
+	#eyr; //expirationYear
+	#hgt; //height
+
+	constructor(hcl, byr, cid, ecl, iyr, pid, eyr, hgt) {
+			this.setHairColor(hcl);
+			this.setBirthYear(byr);
+			this.setCountryId(cid);
+			this.setEyeColor(ecl);
+			this.setIssueYear(iyr);
+			this.setPassportId(pid);
+			this.setExpirationYear(eyr);
+			this.setHeight(hgt);
+	}
+
+
+	setHairColor(hcl) {
+		try{
+			//trim
+			hcl = hcl.trim();
+			//console.log(`\n${hcl}`);
+			//validate
+			if(hcl.match(/(#)([a-fA-F0-9]{6})/) !== null){
+				//console.log(hcl);
+				this.#hcl = hcl;
+			}else{
+				this.#hcl = "invalid";
+			}
+		}catch (err) {
+			this.#hcl = "invalid";
 		}
-		//set
-		if(hcl === null) {
-			return "invalid passport";
-		} else {
-			return hcl;
-		}
-	};
-	const setBirthYear = (byr) => {
+	}
+	getHairColor() {
+		return this.#hcl;
+	}
+	setBirthYear(byr) {
 		//trim
 		try {
 			byr = byr.trim();
-		} catch {
-			byr = null;
-		}
-		//validate
-		if(byr.length !== 4) {
-			byr = null;
-		}
-		try {
-			if(Number(byr) > 2002 || Number(byr) < 1920) {
-				byr = null;
+			if(byr.length !== 4 || Number(byr) > 2002 || Number(byr) < 1920) {
+				this.#byr =  "invalid";
+			} else {
+				this.#byr = byr;
 			}
-		} catch {//if catch is triggered byr is NaN
-			byr = null;
+		} catch {
+			this.#byr =  "invalid";
 		}
-		//set
-		if(byr === null) {
-			return "invalid passport";
-		} else {
-			return byr;
-		}
-	};
-	const setIssueYear = (iyr) => {
-		//trim
+	}
+	getBirthYear() {
+		return this.#byr;
+	}
+	setIssueYear(iyr) {
 		try {
 			iyr = iyr.trim();
-		} catch {
-			iyr = null;
-		}
-		//validate
-		if(iyr.length !== 4) {
-			iyr = null;
-		}
-		try {
-			if(Number(iyr) > 2020 || Number(iyr) < 2010) {
-				iyr = null;
+			if(iyr.length !== 4 || Number(iyr) > 2020 || Number(iyr) < 2010) {
+				this.#iyr = "invalid";
+			} else {
+				this.#iyr = iyr;
 			}
-		} catch {//if catch is triggered iyr is NaN
-			iyr = null;
+		} catch {
+			this.#iyr = "invalid";
 		}
-		//set
-		if(iyr === null) {
-			return "invalid passport";
-		} else {
-			return iyr;
-		}
-	};
-	const setExpirationYear = (eyr) => {
-		//trim
+	}
+	getIssueYear() {
+		return this.#iyr;
+	}
+	setExpirationYear(eyr) {
 		try {
 			eyr = eyr.trim();
-		} catch {
-			eyr = null;
-		}
-		//validate
-		if(eyr.length !== 4) {
-			eyr = null;
-		}
-		try {
-			if(Number(eyr) > 2030 || Number(eyr) < 2020) {
-				eyr = null;
+			if(eyr.length !== 4 || Number(eyr) > 2030 || Number(eyr) < 2020) {
+				this.#eyr = "invalid"
+			} else {
+				this.#eyr = eyr;
 			}
-		} catch {//if catch is triggered iyr is NaN
-			eyr = null;
+		} catch {
+			this.#eyr = "invalid";
 		}
-		//set
-		if(eyr === null) {
-			return "invalid passport";
-		} else {
-			return eyr;
-		}
-	};
-	const setHeight = (hgt) => {
-		//trim
+	}
+	getExpirationYear() {
+		return this.#eyr;
+	}
+	setHeight(hgt) {
 		try {
 			hgt = hgt.trim();
-		} catch {
-			hgt = null;
-		}
-		//validate
-		try {
-			if(hgt.substr(-2) !== "cm" && hgt.substr(-2) !== "in") {
-				hgt = null;
-			}
 			let num = Number(hgt.substring(0, hgt.length - 2));
-			if(hgt.substr(-2) === "cm" && (num < 150 || num > 193)) {
-				hgt = null
+			if( (hgt.substr(-2) !== "cm" && hgt.substr(-2) !== "in") ||
+				hgt.substr(-2) === "cm" && (num < 150 || num > 193) ||
+				hgt.substr(-2) === "in" && (num < 59 || num > 76) ) {
+				this.#hgt = "invalid";
+			}else {
+				this.#hgt = hgt;
 			}
-			if(hgt.substr(-2) === "in" && (num < 59 || num > 76)) {
-				hgt = null
-			}
-		} catch {//if catch is triggered we received an unexpected data type
-			hgt = null;
+		} catch {
+			this.#hgt = "invalid";
 		}
-		//set
-		if(hgt === null) {
-			return "invalid passport";
-		} else {
-			return hgt;
-		}
-	};
-	const setEyeColor = (ecl) => {
+	}
+	getHeight() {
+		return this.#hgt;
+	}
+	setEyeColor(ecl) {
 		//trim
 		try {
 			ecl = ecl.trim();
+			switch(ecl) {
+				case "amb":
+					this.#ecl = ecl;
+					break;
+				case "brn":
+					this.#ecl = ecl;
+					break;
+				case "blu":
+					this.#ecl = ecl;
+					break;
+				case "gry":
+					this.#ecl = ecl;
+					break;
+				case "grn":
+					this.#ecl = ecl;
+					break;
+				case "hzl":
+					this.#ecl = ecl;
+					break;
+				case "oth":
+					this.#ecl = ecl;
+					break;
+				default:
+					this.#ecl = "invalid";
+			}
 		} catch {
-			ecl = null;
+			this.#ecl = "invalid";
 		}
-		//validate
-		switch(ecl) {
-			case "amb":
-				break;
-			case "brn":
-				break;
-			case "blu":
-				break;
-			case "gry":
-				break;
-			case "grn":
-				break;
-			case "hzl":
-				break;
-			case "oth":
-				break;
-			default:
-				ecl = null;
-		}
-		//set
-		if(ecl === null) {
-			return "invalid passport";
-		} else {
-			return ecl;
-		}
-	};
-	const setPassportId = (pid) => {
+	}
+	getEyeColor() {
+		return this.#ecl;
+	}
+	setPassportId(pid) {
+
 		//trim
 		try {
 			pid = pid.trim();
-		} catch {
-			pid = null;
-		}
-		//validate
-		try {
-			if(Number(pid) < 0) {
-				pid = null;
-			}
-			if(pid.length !== 9) {
-				pid = null;
+			if(Number(pid) < 0 || pid.length !== 9) {
+				this.#pid = "invalid";
+			} else{
+				this.#pid = pid;
 			}
 		} catch {
-			pid = null;
+			this.#pid = "invalid";
 		}
-		//set
-		if(pid === null) {
-			return "invalid passport";
-		} else {
-			return pid;
-		}
-	};
-	const setCountryId = (cid) => {
+	}
+	getPassportId() {
+		return this.#pid
+	}
+	setCountryId(cid) {
 		//trim
 		try {
 			cid = cid.trim();
+			this.#cid = cid;
 		} catch {
-			cid = null;
+			this.#cid = null;
 		}
-		//validate
+	}
+	getCountryId() {
+		return this.#cid;
+	}
+	validate() {
+		//validate hcl
+		if(this.getHairColor() === "invalid"){
+			return false;
+		}
+		//validate byr
+		if(this.getBirthYear() === "invalid"){
+			return false;
+		}
+		//validate iyr
+		if(this.getIssueYear() === "invalid"){
+			return false;
+		}
+		//validate eyr
+		if(this.getExpirationYear() === "invalid"){
+			return false;
+		}
+		//validate hgt
+		if(this.getHeight() === "invalid"){
+			return false;
+		}
+		//validate ecl
+		if(this.getEyeColor() === "invalid"){
+			return false;
+		}
+		//validate pid
+		if(this.getPassportId() === "invalid"){
+			return false;
+		}
+		//validate cid
+		return true;
+	}
+}
+function solve(input) {
+	input = input.toString().split('\n\r\n');
+	let validCount = 0;
 
-		//set
-		if(cid === null) {
-			return cid
-		} else {
-			return cid;
-		}
-	};
-	function Passport(input) {
-		input = input.split(/\s/gi);
+	for(let i = 0; i < input.length; i++) {
+		input[i] = input[i].split(/\s/gi);
+
 		let hcl, byr, cid, ecl, iyr, pid, eyr, hgt = null;
-		for(let j = 0; j < input.length; j++) {
+		for(let j = 0; j < input[i].length; j++) {
+			//console.log(input[i][j].substr(0, 3));
 			switch(true) {
-				case (input[j].substr(0, 3) === "hcl"):
-					hcl = input[j].substr(4);
+				case (input[i][j].substr(0, 3) === "hcl"):
+					hcl = input[i][j].substr(4);
 					break;
-				case (input[j].substr(0, 3) === "byr"):
-					byr = input[j].substr(4);
+				case (input[i][j].substr(0, 3) === "byr"):
+					byr = input[i][j].substr(4);
 					break;
-				case (input[j].substr(0, 3) === "cid"):
-					cid = input[j].substr(4);
+				case (input[i][j].substr(0, 3) === "cid"):
+					cid = input[i][j].substr(4);
 					break;
-				case (input[j].substr(0, 3) === "ecl"):
-					ecl = input[j].substr(4);
+				case (input[i][j].substr(0, 3) === "ecl"):
+					ecl = input[i][j].substr(4);
 					break;
-				case (input[j].substr(0, 3) === "iyr"):
-					iyr = input[j].substr(4);
+				case (input[i][j].substr(0, 3) === "iyr"):
+					iyr = input[i][j].substr(4);
 					break;
-				case (input[j].substr(0, 3) === "pid"):
-					pid = input[j].substr(4);
+				case (input[i][j].substr(0, 3) === "pid"):
+					pid = input[i][j].substr(4);
 					break;
-				case (input[j].substr(0, 3) === "eyr"):
-					eyr = input[j].substr(4);
+				case (input[i][j].substr(0, 3) === "eyr"):
+					eyr = input[i][j].substr(4);
 					break;
-				case (input[j].substr(0, 3) === "hgt"):
-					hgt = input[j].substr(4);
+				case (input[i][j].substr(0, 3) === "hgt"):
+					hgt = input[i][j].substr(4);
 					break;
 				default:
 					break;
 			}
 		}
 		try {
-			this.hcl = setHairColor(hcl);
-		} catch(err) {
-			this.hcl = "invalid passport";
-		}
-		try {
-			this.byr = setBirthYear(byr);
-		} catch(err) {
-			this.byr = "invalid passport";
-		}
-		try {
-			this.cid = setCountryId(cid);
-		} catch(err) {
-			this.cid = cid;
-		}
-		try {
-			this.ecl = setEyeColor(ecl);
-		} catch(err) {
-			this.ecl = "invalid passport";
-		}
-		try {
-			this.iyr = setIssueYear(iyr);
-		} catch(err) {
-			this.iyr = "invalid passport";
-		}
-		try {
-			this.pid = setPassportId(pid);
-		} catch(err) {
-			this.pid = "invalid passport";
-		}
-		try {
-			this.eyr = setExpirationYear(eyr);
-		} catch(err) {
-			this.eyr = "invalid passport";
-		}
-		try {
-			this.hgt = setHeight(hgt);
-		} catch(err) {
-			this.hgt = "invalid passport";
-		}
-	}
-	return new Passport(input);
-}
-function solve(input) {
-	input = input.split('\n\n');
-	let validCount = 0;
-	for(let i = 0; i < input.length; i++) {
-		input[i] = createPassport(input[i]);
-		if(input[i].hcl !== "invalid passport" &&
-			input[i].byr !== "invalid passport" &&
-			input[i].pid !== "invalid passport" &&
-			input[i].ecl !== "invalid passport" &&
-			input[i].iyr !== "invalid passport" &&
-			input[i].eyr !== "invalid passport" &&
-			input[i].hgt !== "invalid passport"
-		){
-			validCount++
+			input[i] = new Passport(hcl, byr, cid, ecl, iyr, pid, eyr, hgt);
+			if(input[i].validate()){
+				validCount++;
+			}
+		}catch (err) {
+			//console.log('Invalid');
 		}
 	}
 	return validCount
