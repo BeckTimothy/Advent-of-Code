@@ -170,32 +170,32 @@ class Passport {
 		return this.#cid;
 	}
 	validate() {
-		//validate hcl
-		if(this.getHairColor() === "invalid"){
-			return false;
+		//validate hair color with regex
+		if(!(this.getHairColor().match(/^#([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$/) !== null)){
+			return false
 		}
 		//validate byr
-		if(this.getBirthYear() === "invalid"){
+		if(!(this.getBirthYear().match(/^(19[2-9]\d|200[0-2])$/) !== null)){
 			return false;
 		}
 		//validate iyr
-		if(this.getIssueYear() === "invalid"){
+		if(!(this.getIssueYear().match(/^(201\d|2020)$/) !== null)){
 			return false;
 		}
 		//validate eyr
-		if(this.getExpirationYear() === "invalid"){
+		if(!(this.getExpirationYear().match(/^(202\d|2030)$/) !== null)){
 			return false;
 		}
 		//validate hgt
-		if(this.getHeight() === "invalid"){
+		if(!(this.getHeight().match(/^((1[5-8]\d|19[0-3])cm|(59|6\d|7[0-6])in)$/) !== null) ){
 			return false;
 		}
 		//validate ecl
-		if(this.getEyeColor() === "invalid"){
+		if(!(this.getEyeColor().match(/^(amb|blu|brn|gry|grn|hzl|oth)$/) !== null)){
 			return false;
 		}
 		//validate pid
-		if(this.getPassportId() === "invalid"){
+		if(!(this.getPassportId().match(/^(\d{9})$/) !== null)){
 			return false;
 		}
 		//validate cid
