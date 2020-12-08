@@ -2,14 +2,13 @@ let input = require("fs").readFileSync("input.txt", { encoding: "utf-8", flag: '
 input = input.split(/\n/);
 function solve(input) {
     let rules = {};
-    input.forEach((line) => {
+    input.forEach((rule) => {
         let parentRegex = /(\w+ \w+) bags contain/;
         let childRegex = /\d+ (\w+ \w+) bags?/g;
-        let regex = parentRegex.exec(line);
-        console.log(regex);
+        let regex = parentRegex.exec(rule);
         let parent = regex[1];
         rules[parent] = [];
-        let children = line.substr(regex[0].length);
+        let children = rule.substr(regex[0].length);
         while (regex = childRegex.exec(children)) {
             rules[parent].push(regex[1]);
         }
