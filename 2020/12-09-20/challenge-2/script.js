@@ -1,30 +1,26 @@
 let input = require("fs").readFileSync("../challenge-1/input.txt", { encoding: "utf-8", flag: 'r'}).trim();
-input = input.split(/\s/);
-
+input = input.split(/\r\n/);
 function solve(input) {
 	let addArr = [];
 	addArr.push(Number(input[0]));
+	addArr.push(Number(input[1]));
 	let needle = Number(findInvalidNum(input, 25));
-	for(let i=1;i<input.length;i++) {
-		//console.log(addArr);
+	for(let i=2;i<input.length;i++) {
 		if(addArr.reduce( (a,b) => Number(a) + Number(b)) > needle) {
-			console.log(addArr.reduce( (a,b) => Number(a) + Number(b)));
-			addArr.shift();
-			i--;
+			if(addArr.length > 2){
+				addArr.shift();
+				i--;
+			}else{
+				addArr.shift();
+				addArr.push(Number(input[i]));
+			}
 		} else if(addArr.reduce( (a,b) => Number(a) + Number(b)) === needle){
-			console.log(`fin`);
 			return Math.min(...addArr) + Math.max(...addArr);
+		} else{
+			addArr.push(Number(input[i]));
 		}
-		addArr.push(Number(input[i]));
-
 	}
 }
-
-
-
-
-
-
 function findInvalidNum(input, pointerLen) {
 	let pointerArr = [];
 	for(let i=0;i<pointerLen-1;i++){
@@ -42,7 +38,6 @@ function findInvalidNum(input, pointerLen) {
 		}
 	}
 }
-
 function findNeedle(arr, needle) {
 	let foundVal = false;
 	for(let j=0; j<arr.length; j++) {
@@ -56,5 +51,4 @@ function findNeedle(arr, needle) {
 		return needle;
 	}
 }
-
 console.log(solve(input));

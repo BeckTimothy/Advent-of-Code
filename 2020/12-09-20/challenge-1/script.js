@@ -1,6 +1,6 @@
 let input = require("fs").readFileSync("../challenge-1/input.txt", { encoding: "utf-8", flag: 'r'}).trim();
-input = input.split(/\s/);
-
+input = input.split(/\r\n/);
+console.log(input);
 function solve(input, pointerLen) {
 	let pointerArr = [];
 	for(let i=0;i<pointerLen-1;i++){
