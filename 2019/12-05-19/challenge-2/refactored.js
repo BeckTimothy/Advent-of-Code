@@ -7,9 +7,10 @@
 
 function intcode(arr) {
 	for(let i = 0; i <= arr.length - 1; i) {
-		console.log(arr[i]);
+
 		let opcodeValueOne = arr[arr[i + 1]];
 		let opcodeValueTwo = arr[arr[i + 2]];
+
 		let nextOpcode = i + 4;
 		let intcodeComplete = arr.length;
 		let storedValue = 5;
@@ -22,27 +23,13 @@ function intcode(arr) {
 		let opParamThou = Number(arr[i].toString().charAt(arr[i].toString().length - 4));
 
 		//switches change the parameter mode based off the parameter mode indicators
-		switch(opParamHund === 1) {
-			case "true":
-				opcodeValueOne = arr[i + 1];
-				break;
-			case "false":
-				opcodeValueOne = arr[arr[i + 1]];
-				break;
-		}
-		switch(opParamThou === 1) {
-			case "true":
-				opcodeValueTwo = arr[i + 2];
-				break;
-			case "false":
-				opcodeValueTwo = arr[arr[i + 2]];
-				break;
-		}
+		opParamHund === 1 ? opcodeValueOne = arr[i + 1] : opcodeValueOne = arr[arr[i + 1]];
+		opParamThou === 1 ? opcodeValueTwo = arr[i + 2] : opcodeValueTwo = arr[arr[i + 2]];
 
 		//switches output the proper instructions based off the opcode, from the ones and tens digits of the opcode address
 		switch(opcodeAddress) {
 			case 0:
-				i = i + 1;
+				i += 1;
 				break;
 			case 1:
 				arr[arr[i + 3]] = opcodeValueOne + opcodeValueTwo;
@@ -53,73 +40,28 @@ function intcode(arr) {
 				i = nextOpcode;
 				break;
 			case 3:
-				switch(opParamHund === 1) {
-					case "true":
-						arr[i + 1] = storedValue;
-						i = i + 2;
-						break;
-					case "false":
-						arr[arr[i + 1]] = storedValue;
-						i = i + 2;
-						break;
-				}
+				opParamHund === 1 ? arr[i + 1] = storedValue : arr[arr[i + 1]] = storedValue;
+				i += 2;
 				break;
 			case 4:
-				switch(opParamHund === 1) {
-					case "true":
-						console.log(`diagnostic code: ${arr[i + 1]}`);
-						return;
-					case "false":
-						console.log(`diagnostic code: ${arr[arr[i + 1]]}`);
-						return;
-				}
+				return opParamHund === 1 ? `diagnostic code: ${arr[i + 1]}` : `diagnostic code: ${arr[arr[i + 1]]}`;
 			case 5:
-				switch(opcodeValueOne !== 0) {
-					case "true":
-						i = opcodeValueTwo;
-						break;
-					case "false":
-						i = i + 3;
-						break;
-				}
+				opcodeValueOne !== 0 ? i = opcodeValueTwo : i += 3;
 				break;
 			case 6:
-				switch(opcodeValueOne === 0) {
-					case "true":
-						i = opcodeValueTwo;
-						break;
-					case "false":
-						i = i + 3;
-						break;
-				}
+				opcodeValueOne === 0 ? i = opcodeValueTwo : i += 3;
 				break;
 			case 7:
-				switch(opcodeValueOne < opcodeValueTwo) {
-					case "true":
-						arr[arr[i + 3]] = 1;
-						i = i + 4;
-						break;
-					case "false":
-						arr[arr[i + 3]] = 0;
-						i = i + 4;
-						break;
-				}
+				opcodeValueOne < opcodeValueTwo ? arr[arr[i + 3]] = 1 : arr[arr[i + 3]] = 0;
+				i += 4;
 				break;
 			case 8:
-				switch(opcodeValueOne === opcodeValueTwo) {
-					case "true":
-						arr[arr[i + 3]] = 1;
-						i = i + 4;
-						break;
-					case "false":
-						arr[arr[i + 3]] = 0;
-						i = i + 4;
-						break;
-				}
+				opcodeValueOne === opcodeValueTwo ? arr[arr[i + 3]] = 1 : arr[arr[i + 3]] = 0;
+				i += 4;
 				break;
 			case 99:
 				i = intcodeComplete;
-				break;
+				return `value at pos 0: ${arr[0]}`;
 			case "false":
 				return "Error invalid input";
 		}
