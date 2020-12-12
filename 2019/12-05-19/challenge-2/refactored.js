@@ -44,7 +44,7 @@ function intcode(arr) {
 				i += 2;
 				break;
 			case 4:
-				return opParamHund === 1 ? `diagnostic code: ${arr[i + 1]}` : `diagnostic code: ${arr[arr[i + 1]]}`;
+				return opParamHund === 1 ? arr[i + 1] : arr[arr[i + 1]];
 			case 5:
 				opcodeValueOne !== 0 ? i = opcodeValueTwo : i += 3;
 				break;
