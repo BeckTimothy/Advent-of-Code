@@ -1,17 +1,32 @@
 let input = "0,13,16,17,1,10,6";
 input = input.split(",");
-let testInput = "0,3,6";
-testInput = testInput.split(",");
 
 function solve(input, end) {
-	for(let i = 0; i < end; i++) {
-		//if i is less than length of input, value is input at [i]
-
-		// else value is $last_sent_value
-
-
+	let lastVal = input[0];
+	let val = input[1];
+	let lastValTurn = 0;
+	let history = {};
+	const getIndexByValue = (obj, value) =>
+		Object.keys(obj).reverse().find(key => obj[key] === value);
+	for(let i = 1; i <= end+1; i++) {
+		if(i < input.length) {
+			history[i] = Number(lastVal);
+			val = Number(input[i]);
+		} else {
+			if(Object.values(history).indexOf(Number(lastVal)) > -1) {
+				let prevInd = getIndexByValue(history, lastVal);
+				val = lastValTurn - prevInd + 1;
+				history[i] = lastVal;
+			} else {
+				val = 0;
+				history[i] = lastVal;
+			}
+		}
+		if(i === end){
+			return lastVal;
+		}
+		lastVal = val;
+		lastValTurn = i;
 	}
 }
-
-console.log(solve(testInput, 10));
-//console.log(solve(input, 2020));
+console.log(solve(input, 2020));
