@@ -14,7 +14,7 @@ function solve(input) {
             while (binArr.length < mask.length) {
                 binArr.unshift('0');
             }
-            for (k = 0; k < binArr.length; k++) {
+            for (let k = 0; k < binArr.length; k++) {
                 if (mask[k] === '1') {
                     binArr[k] = '1';
                 } else if (mask[k] === '0') {
