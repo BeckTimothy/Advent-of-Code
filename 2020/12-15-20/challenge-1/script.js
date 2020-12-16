@@ -29,4 +29,4 @@ function solve(input, end) {
 		lastValTurn = i;
 	}
 }
-console.log(solve(input, 2020));
+console.log(solve(input, 30000000));
