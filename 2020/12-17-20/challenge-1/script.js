@@ -140,6 +140,7 @@ const edgeHandler = (input) => {
 		//add x layers
 		for(let z = 0; z < input.length; z++) {
 			for(let y = 0; y < input[z].length; y++) {
+				console.log(input[z][y]);
 				input[z][y].push(".");
 				input[z][y].unshift(".");
 			}
@@ -183,5 +184,5 @@ function arrClone( arr ) {
 	}
 }
 
-
-console.log(conwaySolve(input, 6));
+console.log(edgeHandler(testInput));
+//console.log(conwaySolve(input, 6));
