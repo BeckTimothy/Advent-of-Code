@@ -4,12 +4,12 @@ for(let i = 0; i < input.length; i++) {
 	input[i] = input[i].split("");
 }
 input = [[input]];
-
 let testInput = [".#.", "..#", "###"];
 for(let i = 0; i < testInput.length; i++) {
 	testInput[i] = testInput[i].split("");
 }
 testInput = [[testInput]];
+//counts the number of active cubes within a 4D nested array
 const countActives = (input) => {
 	let count = 0;
 	for(let a = 0; a < input.length; a++) {
@@ -25,6 +25,16 @@ const countActives = (input) => {
 	}
 	return count;
 };
+/**
+ * the values a,z,y,x are coordinates representing a point in a hypercube
+ * the values b,h,l,w are iterating through the breadth, height, length, and width of each dimension.
+ * @param a value representing part of a coordinate in a hypercube
+ * @param z value representing part of a coordinate in a hypercube
+ * @param y value representing part of a coordinate in a hypercube
+ * @param x value representing part of a coordinate in a hypercube
+ * @param input 4-dimensional nested array representing a hypercube
+ * @returns {string} active status of the provided point given its surroundigs
+ */
 const activeHandler = (a, z, y, x, input) => {
 	let count = 0;
 	let arr = [];
@@ -55,6 +65,16 @@ const activeHandler = (a, z, y, x, input) => {
 		return ".";
 	}
 };
+/**
+ * the values a,z,y,x are coordinates representing a point in a hypercube
+ * the values b,h,l,w are iterating through the breadth, height, length, and width of each dimension.
+ * @param a value representing part of a coordinate in a hypercube
+ * @param z value representing part of a coordinate in a hypercube
+ * @param y value representing part of a coordinate in a hypercube
+ * @param x value representing part of a coordinate in a hypercube
+ * @param input 4-dimensional nested array representing a hypercube
+ * @returns {string} active status of the provided point given its surroundigs
+ */
 const inactiveHandler = (a, z, y, x, input) => {
 	let count = 0;
 	for(let b = a - 1; b <= a + 1; b++) {
@@ -81,6 +101,12 @@ const inactiveHandler = (a, z, y, x, input) => {
 		return ".";
 	}
 };
+/**
+ * the values a,z,y,x are coordinates representing a point in a hypercube
+ * @param input 4-dimensional nested array representing a hypercube
+ * @param iterator number of times to iterate this conway-hypercube
+ * @returns {number} number of active cubes in this conway hyper-cube after given iterations
+ */
 function conwaySolve(input, iterator) {
 	do {
 		input = edgeHandler(input);
