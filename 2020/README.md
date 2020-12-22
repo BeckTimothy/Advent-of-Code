@@ -21,7 +21,7 @@
 | [Day 15](https://adventofcode.com/2020/day/15) | :star::star: | [Javascript](https://github.com/BeckTimothy/Advent-of-Code/blob/master/2020/12-15-20/challenge-1/script.js) | [Javascript](https://github.com/BeckTimothy/Advent-of-Code/blob/master/2020/12-15-20/challenge-2/script.js) |  |
 | [Day 16](https://adventofcode.com/2020/day/16) | :star::star: | [Javascript](https://github.com/BeckTimothy/Advent-of-Code/blob/master/2020/12-16-20/challenge-1/script.js) | [Javascript](https://github.com/BeckTimothy/Advent-of-Code/blob/master/2020/12-16-20/challenge-2/script.js) |  |
 | [Day 17](https://adventofcode.com/2020/day/17) |  |  |  |  |
-| [Day 18](https://adventofcode.com/2020/day/18) | :star: | [Javascript](https://github.com/BeckTimothy/Advent-of-Code/blob/master/2020/12-18-20/challenge-1/script.js) |  |  |
+| [Day 18](https://adventofcode.com/2020/day/18) | :star::star: | [Javascript](https://github.com/BeckTimothy/Advent-of-Code/blob/master/2020/12-18-20/challenge-1/script.js) | [Javascript](https://github.com/BeckTimothy/Advent-of-Code/blob/master/2020/12-18-20/challenge-2/script.js) |  |
 | [Day 19](https://adventofcode.com/2020/day/19) |  |  |  |  |
 | [Day 20](https://adventofcode.com/2020/day/20) |  |  |  |  |
 | [Day 21](https://adventofcode.com/2020/day/21) |  |  |  |  |
