@@ -11,7 +11,6 @@ for(let i=1;i<input.length;i++){
 
 let gammaRate = iter.map((x,i) => {return iter[i]>midVal?1:0}).join('');
 let epsilon = iter.map((x,i) => {return iter[i]>midVal?0:1}).join('');
-console.log(midVal)
 console.log(`gammaRate: ${parseInt(gammaRate,2)}`);
 console.log(`epsilon value: ${parseInt(epsilon, 2)}`);
 console.log(`power consumption: ${parseInt(epsilon,2) * parseInt(gammaRate,2)}`);
@@ -21,27 +20,48 @@ let position=0;
 let lookup = null;
 
 while(inputsToFilter.length > 1){
-    let mcv = inputsToFilter.map((x,i) => {return inputsToFilter[i]>midVal?1:0}).join('');
+
+    iter = inputsToFilter[0].split('');
+    midVal = Math.ceil(inputsToFilter.length / 2);
+
+
+    for(let i=1;i<inputsToFilter.length;i++){
+        let binary = inputsToFilter[i].split('');
+        binary.forEach((num, index) => {iter[index] = Number(iter[index])+Number(num)})
+    }
+
+    let mostCommonValue = iter.map((x,i) => {return iter[i]>=midVal?1:0}).join('');
+
     inputsToFilter = inputsToFilter.filter(n => {
         lookup = n;
-        return n[position] === mcv[position]
+        return n[position] === mostCommonValue[position]
     })
     position++
 }
-let oxGenRating = parseInt(inputsToFilter.length<1?lookup:inputsToFilter[0],2);
+let oxGenRating = parseInt(inputsToFilter.length===1?inputsToFilter[0]:lookup,2);
 console.log(`oxGenRating: ${oxGenRating}`);
 
 inputsToFilter = input;
 position=0;
 lookup = null;
 while(inputsToFilter.length > 1){
-    let lcv = inputsToFilter.map((x,i) => {return inputsToFilter[i]>midVal?0:1}).join('');
+
+    iter = inputsToFilter[0].split('');
+    midVal = Math.ceil(inputsToFilter.length / 2);
+
+
+    for(let i=1;i<inputsToFilter.length;i++){
+        let binary = inputsToFilter[i].split('');
+        binary.forEach((num, index) => {iter[index] = Number(iter[index])+Number(num)})
+    }
+
+    let leastCommonValue = iter.map((x,i) => {return iter[i]>=midVal?0:1}).join('');
     inputsToFilter = inputsToFilter.filter(n => {
         lookup = n;
-        return n[position] === lcv[position]
+        return n[position] === leastCommonValue[position]
     })
     position++
 }
-let scrubRating = parseInt(inputsToFilter.length<1?lookup:inputsToFilter[0],2);
+let scrubRating = parseInt(inputsToFilter.length===1?inputsToFilter[0]:lookup,2);
 console.log(`scrubberRating: ${scrubRating}`);
 console.log(`lifeSupportRating: ${scrubRating * oxGenRating}`)
