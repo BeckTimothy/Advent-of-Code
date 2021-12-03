@@ -3,15 +3,15 @@ let input = fs.readFileSync('./input.txt');
 input = input.toString().split('\n');
 //returns a binary of the most or least common values for each bit
 const commonValues = (arr, type) => {
-    let it = arr[0].split('');
+    let binArr = arr[0].split('');
     let mid = arr.length / 2;
     for(let i=1;i<arr.length;i++){
         let binary = arr[i].split('');
-        binary.forEach((num, index) => {it[index] = +it[index]+ +num})
+        binary.forEach((num, index) => {binArr[index] = Number(binArr[index]) + Number(num)})
     }
     return type==="most"
-        ?it.map((x,i) => {return it[i]>=mid?1:0}).join('')
-        :it.map((x,i) => {return it[i]>=mid?0:1}).join('');
+        ?binArr.map((x,i) => {return binArr[i]>=mid?1:0}).join('')
+        :binArr.map((x,i) => {return binArr[i]>=mid?0:1}).join('');
 }
 //uses the most or least common values to determine which binaries to filter
 const parseBinaries = (arr, type) => {
