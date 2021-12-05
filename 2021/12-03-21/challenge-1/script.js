@@ -2,7 +2,7 @@ const fs = require('fs');
 let input = fs.readFileSync('./input.txt');
 input = input.toString().split('\n');
 let iter = input[0].split('');
-let midVal = Math.floor(input.length / 2);
+let midVal = input.length / 2;
 
 for(let i=1;i<input.length;i++){
     let binary = input[i].split('');

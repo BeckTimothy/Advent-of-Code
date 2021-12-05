@@ -9,9 +9,8 @@ const commonValues = (arr, type) => {
         let binary = arr[i].split('');
         binary.forEach((num, index) => {binArr[index] = Number(binArr[index]) + Number(num)})
     }
-    return type==="most"
-        ?binArr.map((x,i) => {return binArr[i]>=mid?1:0}).join('')
-        :binArr.map((x,i) => {return binArr[i]>=mid?0:1}).join('');
+    return binArr.map((x,i) => {return type==="most" ? +(binArr[i]>=mid) : +!(binArr[i]>=mid) }).join('')
+
 }
 //uses the most or least common values to determine which binaries to filter
 const parseBinaries = (arr, type) => {
