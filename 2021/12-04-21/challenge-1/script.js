@@ -78,6 +78,7 @@ const solveBoard = (board, winningNumbers) => {
     let mostRecentNum = Number(winningNumbers[winningNumbers.length -1])
     return boardScore * mostRecentNum
 }
+//solve for challenge 1
 const winBingo = () => {
     winningBoard = null;
     while(winningBoard === null){
@@ -87,6 +88,7 @@ const winBingo = () => {
 
     return  solveBoard(winningBoard, currentNums)
 }
+//solve for challenge 2
 const loseBingo = () => {
     winningBoard = null;
     while(boards.length > 1){
