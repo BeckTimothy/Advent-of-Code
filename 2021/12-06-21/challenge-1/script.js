@@ -36,26 +36,14 @@ const solveChallengeOne = () => {
         school = school.concat(newFish);
         newFish = [];
     }
-    return school.length;
+    return `Challenge 1: ${school.length}`;
 }
 
 const solveChallengeTwo=()=>{
     //initialize school
-    let fishCount = {
-        0: 0,
-        1: 0,
-        2: 0,
-        3: 0,
-        4: 0,
-        5: 0,
-        6: 0,
-        7: 0,
-        8: 0
-    };
+    let fishCount = {0: 0, 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0, 7: 0, 8: 0};
     //add inputs to school
-    for(let i in input){
-        fishCount[Number(input[i])]++;
-    }
+    input.forEach(x => fishCount[Number(x)]++ )
     //loop 256 days
     for (let day = 1; day <= 256; day++) {
         let fishToSpawn = fishCount[0];
@@ -70,7 +58,7 @@ const solveChallengeTwo=()=>{
         fishCount[8] = fishToSpawn;
     }
     //sum fish quantities after spawn period
-    return Object.values(fishCount).reduce((x,y)=>x+y)
+    return `Challenge 2: ${Object.values(fishCount).reduce((x,y)=>x+y)}`
 }
 
 console.log(solveChallengeTwo());
