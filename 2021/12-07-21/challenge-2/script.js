@@ -26,15 +26,7 @@ for(let i = input[indexOfMean]+1; i >= input[indexOfMedian]; i--){
     let count = 0;
     for(let j=0;j<input.length;j++){
         let diff = Math.abs(Number(i) - Number(input[j]));
-        if(diff > 0) {
-            let multi = diff + 1;
-            if (diff % 2 === 0) {
-                count += (multi * (diff / 2))
-            } else {
-                count += (((multi * ((diff - 1) / 2))) + (multi / 2))
-            }
-        }
-
+        count += ((diff**2) + diff) / 2
     }
     if(count < bestFuelCost){
         bestFuelCost = count;
