@@ -11,7 +11,7 @@ for(let i=0;i<forestHeight;i++){
         //get trees in row
         let treesToTheLeftOfMe = input[i].substring(0,j).split('');
         let treesToTheRight = input[i].substring(j+1).split('');
-        //stuck in the middle with yew
+        //Here I am, stuck in the middle with yew
         let treesNorth = [];
         let treesSouth = [];
         for(let k=0; k<forestWidth ;k++){
