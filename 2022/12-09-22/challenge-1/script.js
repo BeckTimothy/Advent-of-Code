@@ -37,60 +37,26 @@ class Rope {
             }
             //console.log(this.headPosition);
             //each time head moves, calculate tail move
-            if(this.headPosition[0] - this.tailPosition[0] > 1
-                && this.headPosition[1] - this.tailPosition[1] > 0) {
-                this.tailPosition[0]++;
-                this.tailPosition[1]++;
+            let xDiff = this.headPosition[0] - this.tailPosition[0];
+            let yDiff = this.headPosition[1] - this.tailPosition[1];
+
+            if(Math.abs(xDiff) > 1){
+                if(Math.abs(yDiff)===1){
+                    this.tailPosition[0]+=(xDiff/2);
+                    this.tailPosition[1]+=yDiff;
+                }else{
+                    this.tailPosition[0]+=(xDiff/2);
+                }
             }
-            if(this.headPosition[0] - this.tailPosition[0] > 1
-                && this.headPosition[1] - this.tailPosition[1] < 0) {
-                this.tailPosition[0]++;
-                this.tailPosition[1]--;
-            }
-            if(this.headPosition[0] - this.tailPosition[0] < -1
-                && this.headPosition[1] - this.tailPosition[1] > 0) {
-                this.tailPosition[0]--;
-                this.tailPosition[1]++;
-            }
-            if(this.headPosition[0] - this.tailPosition[0] < -1
-                && this.headPosition[1] - this.tailPosition[1] < 0) {
-                this.tailPosition[0]--;
-                this.tailPosition[1]--;
+            if(Math.abs(yDiff) > 1){
+                if(Math.abs(xDiff)===1){
+                    this.tailPosition[1]+=(yDiff/2);
+                    this.tailPosition[0]+=xDiff;
+                }else{
+                    this.tailPosition[1]+=(yDiff/2);
+                }
             }
 
-            if(this.headPosition[1] - this.tailPosition[1] > 1
-                && this.headPosition[0] - this.tailPosition[0] > 0) {
-                this.tailPosition[1]++;
-                this.tailPosition[0]++;
-            }
-            if(this.headPosition[1] - this.tailPosition[1] > 1
-                && this.headPosition[0] - this.tailPosition[0] < 0) {
-                this.tailPosition[1]++;
-                this.tailPosition[0]--;
-            }
-            if(this.headPosition[1] - this.tailPosition[1] < -1
-                && this.headPosition[0] - this.tailPosition[0] > 0) {
-                this.tailPosition[1]--;
-                this.tailPosition[0]++;
-            }
-            if(this.headPosition[1] - this.tailPosition[1] < -1
-                && this.headPosition[0] - this.tailPosition[0] < 0) {
-                this.tailPosition[1]--;
-                this.tailPosition[0]--;
-            }
-
-            if(this.headPosition[0] - this.tailPosition[0] > 1) {
-                this.tailPosition[0]++;
-            }
-            if(this.headPosition[0] - this.tailPosition[0] < -1) {
-                this.tailPosition[0]--;
-            }
-            if(this.headPosition[1] - this.tailPosition[1] > 1) {
-                this.tailPosition[1]++;
-            }
-            if(this.headPosition[1] - this.tailPosition[1] < -1) {
-                this.tailPosition[1]--;
-            }
             //console.log(this.tailPosition)
             //store history
             this.addToHistory();

@@ -45,59 +45,24 @@ class Rope {
     moveTail = (i) => {
 
         //each time head moves, calculate tail move
-        if(this.ropePosition[i][0] - this.ropePosition[i+1][0] > 1
-            && this.ropePosition[i][1] - this.ropePosition[i+1][1] > 0) {
-            this.ropePosition[i+1][0]++;
-            this.ropePosition[i+1][1]++;
-        }
-        if(this.ropePosition[i][0] - this.ropePosition[i+1][0] > 1
-            && this.ropePosition[i][1] - this.ropePosition[i+1][1] < 0) {
-            this.ropePosition[i+1][0]++;
-            this.ropePosition[i+1][1]--;
-        }
-        if(this.ropePosition[i][0] - this.ropePosition[i+1][0] < -1
-            && this.ropePosition[i][1] - this.ropePosition[i+1][1] > 0) {
-            this.ropePosition[i+1][0]--;
-            this.ropePosition[i+1][1]++;
-        }
-        if(this.ropePosition[i][0] - this.ropePosition[i+1][0] < -1
-            && this.ropePosition[i][1] - this.ropePosition[i+1][1] < 0) {
-            this.ropePosition[i+1][0]--;
-            this.ropePosition[i+1][1]--;
-        }
+        let xDiff = this.ropePosition[i][0] - this.ropePosition[i+1][0];
+        let yDiff = this.ropePosition[i][1] - this.ropePosition[i+1][1];
 
-        if(this.ropePosition[i][1] - this.ropePosition[i+1][1] > 1
-            && this.ropePosition[i][0] - this.ropePosition[i+1][0] > 0) {
-            this.ropePosition[i+1][1]++;
-            this.ropePosition[i+1][0]++;
+        if(Math.abs(xDiff) > 1){
+            if(Math.abs(yDiff)===1){
+                this.ropePosition[i+1][0]+=(xDiff/2);
+                this.ropePosition[i+1][1]+=yDiff;
+            }else{
+                this.ropePosition[i+1][0]+=(xDiff/2);
+            }
         }
-        if(this.ropePosition[i][1] - this.ropePosition[i+1][1] > 1
-            && this.ropePosition[i][0] - this.ropePosition[i+1][0] < 0) {
-            this.ropePosition[i+1][1]++;
-            this.ropePosition[i+1][0]--;
-        }
-        if(this.ropePosition[i][1] - this.ropePosition[i+1][1] < -1
-            && this.ropePosition[i][0] - this.ropePosition[i+1][0] > 0) {
-            this.ropePosition[i+1][1]--;
-            this.ropePosition[i+1][0]++;
-        }
-        if(this.ropePosition[i][1] - this.ropePosition[i+1][1] < -1
-            && this.ropePosition[i][0] - this.ropePosition[i+1][0] < 0) {
-            this.ropePosition[i+1][1]--;
-            this.ropePosition[i+1][0]--;
-        }
-
-        if(this.ropePosition[i][0] - this.ropePosition[i+1][0] > 1) {
-            this.ropePosition[i+1][0]++;
-        }
-        if(this.ropePosition[i][0] - this.ropePosition[i+1][0] < -1) {
-            this.ropePosition[i+1][0]--;
-        }
-        if(this.ropePosition[i][1] - this.ropePosition[i+1][1] > 1) {
-            this.ropePosition[i+1][1]++;
-        }
-        if(this.ropePosition[i][1] - this.ropePosition[i+1][1] < -1) {
-            this.ropePosition[i+1][1]--;
+        if(Math.abs(yDiff) > 1){
+            if(Math.abs(xDiff)===1){
+                this.ropePosition[i+1][1]+=(yDiff/2);
+                this.ropePosition[i+1][0]+=xDiff;
+            }else{
+                this.ropePosition[i+1][1]+=(yDiff/2);
+            }
         }
     }
 }
