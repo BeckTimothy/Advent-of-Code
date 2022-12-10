@@ -50,18 +50,18 @@ class Rope {
 
         if(Math.abs(xDiff) > 1){
             if(Math.abs(yDiff)===1){
-                this.ropePosition[i+1][0]+=(xDiff/2);
-                this.ropePosition[i+1][1]+=yDiff;
+                this.ropePosition[i+1][0] += (xDiff/2);
+                this.ropePosition[i+1][1] += yDiff;
             }else{
-                this.ropePosition[i+1][0]+=(xDiff/2);
+                this.ropePosition[i+1][0] += (xDiff/2);
             }
         }
         if(Math.abs(yDiff) > 1){
             if(Math.abs(xDiff)===1){
-                this.ropePosition[i+1][1]+=(yDiff/2);
-                this.ropePosition[i+1][0]+=xDiff;
+                this.ropePosition[i+1][1] += (yDiff/2);
+                this.ropePosition[i+1][0] += xDiff;
             }else{
-                this.ropePosition[i+1][1]+=(yDiff/2);
+                this.ropePosition[i+1][1] += (yDiff/2);
             }
         }
     }
