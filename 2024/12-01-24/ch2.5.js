@@ -10,18 +10,17 @@ input.forEach(x => {
 });
 //potentially faster solution to part 2
 let leftMap = new Map();
-leftArr.forEach(x => {
-    if(leftMap.has(x)){
-        leftMap.set(x, leftMap.get(x)+1);
+leftArr.forEach(value => {
+    if(leftMap.has(value)){
+        leftMap.set(value, leftMap.get(value)+1);
     } else{
-        leftMap.set(x, 1);
+        leftMap.set(value, 1);
     }
 });
-let count = 0;
-rightArr.forEach(x => {
-    if(leftMap.has(x)){
-        count += ( x * leftMap.get(x) );
+let sum = 0;
+rightArr.forEach(value => {
+    if(leftMap.has(value)){
+        sum += ( value * leftMap.get(value) );
     }
 });
-console.log(count);
-
+console.log(sum);
