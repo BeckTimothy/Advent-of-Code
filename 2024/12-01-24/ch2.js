@@ -8,6 +8,7 @@ input.forEach(x => {
     leftArr.push(Number(x[0]));
     rightArr.push(Number(x[1]));
 })
+
 let leftMap = new Map();
 leftArr.forEach(x => {
     if(leftMap.has(x)){
@@ -26,11 +27,9 @@ rightArr.forEach(x => {
     }
 })
 
-let count =0;
-leftMap.forEach((value, key, map)=>{
-    if(rightMap.has(key)){
-        count += ( value * key * rightMap.get(key) )
-    }
+let count = 0;
+let sharedValues = new Set(leftMap.keys()).intersection(new Set(rightMap.keys()));
+sharedValues.forEach((value)=>{
+    count += ( value * leftMap.get(value) * rightMap.get(value) )
 })
-
 console.log(count)
