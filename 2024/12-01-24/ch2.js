@@ -7,29 +7,38 @@ input.forEach(x => {
     x=x.split("   ");
     leftArr.push(Number(x[0]));
     rightArr.push(Number(x[1]));
-})
+});
 
+const findSimilarities = () => {
 let leftMap = new Map();
 leftArr.forEach(x => {
     if(leftMap.has(x)){
-        leftMap.set(x, leftMap.get(x)+1)
+        leftMap.set(x, leftMap.get(x)+1);
     } else{
-        leftMap.set(x, 1)
+        leftMap.set(x, 1);
     }
-})
-
+});
 let rightMap = new Map();
 rightArr.forEach(x => {
     if(rightMap.has(x)){
-        rightMap.set(x, rightMap.get(x)+1)
+        rightMap.set(x, rightMap.get(x)+1);
     } else{
-        rightMap.set(x, 1)
+        rightMap.set(x, 1);
     }
-})
-
+});
 let count = 0;
 let sharedValues = new Set(leftMap.keys()).intersection(new Set(rightMap.keys()));
 sharedValues.forEach((value)=>{
-    count += ( value * leftMap.get(value) * rightMap.get(value) )
-})
-console.log(count)
+    count += ( value * leftMap.get(value) * rightMap.get(value) );
+});
+return count
+}
+
+
+let startTime = new Date();
+console.log(startTime)
+for(let i=0; i<10000; i++){
+    findSimilarities()
+}
+console.log(new Date())
+console.log(new Date()-startTime)
