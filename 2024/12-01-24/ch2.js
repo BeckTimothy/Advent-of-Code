@@ -8,8 +8,6 @@ input.forEach(x => {
     leftArr.push(Number(x[0]));
     rightArr.push(Number(x[1]));
 });
-
-const findSimilarities = () => {
 let leftMap = new Map();
 leftArr.forEach(x => {
     if(leftMap.has(x)){
@@ -31,14 +29,4 @@ let sharedValues = new Set(leftMap.keys()).intersection(new Set(rightMap.keys())
 sharedValues.forEach((value)=>{
     count += ( value * leftMap.get(value) * rightMap.get(value) );
 });
-return count
-}
-
-
-let startTime = new Date();
-console.log(startTime)
-for(let i=0; i<10000; i++){
-    findSimilarities()
-}
-console.log(new Date())
-console.log(new Date()-startTime)
+console.log(count);

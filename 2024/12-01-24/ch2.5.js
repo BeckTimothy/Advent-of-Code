@@ -8,30 +8,20 @@ input.forEach(x => {
     leftArr.push(Number(x[0]));
     rightArr.push(Number(x[1]));
 });
+//potentially faster solution to part 2
+let leftMap = new Map();
+leftArr.forEach(x => {
+    if(leftMap.has(x)){
+        leftMap.set(x, leftMap.get(x)+1);
+    } else{
+        leftMap.set(x, 1);
+    }
+});
+let count = 0;
+rightArr.forEach(x => {
+    if(leftMap.has(x)){
+        count += ( x * leftMap.get(x) );
+    }
+});
+console.log(count);
 
-const findSimilarities = () => {
-    let leftMap = new Map();
-    leftArr.forEach(x => {
-        if(leftMap.has(x)){
-            leftMap.set(x, leftMap.get(x)+1);
-        } else{
-            leftMap.set(x, 1);
-        }
-    });
-    let count = 0;
-    rightArr.forEach(x => {
-        if(leftMap.has(x)){
-            count += ( x * leftMap.get(x) );
-        }
-    });
-
-    return count;
-}
-
-let startTime = new Date();
-console.log(startTime)
-for(let i=0; i<10000; i++){
-    findSimilarities()
-}
-console.log(new Date())
-console.log(new Date()-startTime)
