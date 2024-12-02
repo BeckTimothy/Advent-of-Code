@@ -3,12 +3,12 @@ let input = fs.readFileSync('./input.txt');
 input = input.toString().trim().split('\r\n');
 let leftArr = [];
 let rightArr = [];
-input.forEach(x => {
-    x=x.split("   ");
-    leftArr.push(Number(x[0]));
-    rightArr.push(Number(x[1]));
+input.forEach(line => {
+    let touple = line.split("   ");
+    leftArr.push(Number(touple[0]));
+    rightArr.push(Number(touple[1]));
 });
-//potentially faster solution to part 2
+//create map from left array
 let leftMap = new Map();
 leftArr.forEach(value => {
     if(leftMap.has(value)){
@@ -18,6 +18,7 @@ leftArr.forEach(value => {
     }
 });
 let sum = 0;
+//iterate through right array adding value*quantity to sum if present in left map
 rightArr.forEach(value => {
     if(leftMap.has(value)){
         sum += ( value * leftMap.get(value) );

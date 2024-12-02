@@ -3,30 +3,33 @@ let input = fs.readFileSync('./input.txt');
 input = input.toString().trim().split('\r\n');
 let leftArr = [];
 let rightArr = [];
-input.forEach(x => {
-    x=x.split("   ");
-    leftArr.push(Number(x[0]));
-    rightArr.push(Number(x[1]));
+input.forEach(line => {
+    let touple = line.split("   ");
+    leftArr.push(Number(touple[0]));
+    rightArr.push(Number(touple[1]));
 });
+//create map from left array
 let leftMap = new Map();
-leftArr.forEach(x => {
-    if(leftMap.has(x)){
-        leftMap.set(x, leftMap.get(x)+1);
+leftArr.forEach(value => {
+    if(leftMap.has(value)){
+        leftMap.set(value, leftMap.get(value)+1);
     } else{
-        leftMap.set(x, 1);
+        leftMap.set(value, 1);
     }
 });
+//create map from right array
 let rightMap = new Map();
-rightArr.forEach(x => {
-    if(rightMap.has(x)){
-        rightMap.set(x, rightMap.get(x)+1);
+rightArr.forEach(value => {
+    if(rightMap.has(value)){
+        rightMap.set(value, rightMap.get(value)+1);
     } else{
-        rightMap.set(x, 1);
+        rightMap.set(value, 1);
     }
 });
-let count = 0;
+let sum = 0;
+//intersect mapped values and iterate through shared keys, adding value*rightQuantity*leftQuantity to sum
 let sharedValues = new Set(leftMap.keys()).intersection(new Set(rightMap.keys()));
 sharedValues.forEach((value)=>{
-    count += ( value * leftMap.get(value) * rightMap.get(value) );
+    sum += ( value * leftMap.get(value) * rightMap.get(value) );
 });
-console.log(count);
+console.log(sum);
