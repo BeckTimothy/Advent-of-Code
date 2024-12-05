@@ -1,4 +1,4 @@
-## Advent of Code - 2022 Challenge Tracker
+## Advent of Code - 2024 Challenge Tracker
 
 [<a align="right" href="https://github.com/BeckTimothy/Advent-of-Code/">**(Return to Directory Root)**</a>](https://github.com/BeckTimothy/Advent-of-Code/)
 

@@ -1,6 +1,6 @@
 ## Advent of Code - 2022 Challenge Tracker
 
-[<p align="right">**(Return to Directory Root)**</p>](https://github.com/BeckTimothy/Advent-of-Code/)
+[<a align="right" href="https://github.com/BeckTimothy/Advent-of-Code/">**(Return to Directory Root)**</a>](https://github.com/BeckTimothy/Advent-of-Code/)
 
 |                    **Docs**                    | **Completed** |                                               **Challenge 1**                                               |                                               **Challenge 2**                                               | **Refactored** |
 |:----------------------------------------------:|:-------------:|:-----------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------------------------------------------------------------:|:---------:|
