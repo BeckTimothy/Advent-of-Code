@@ -8,7 +8,7 @@ For more information please see: https://adventofcode.com/2020/about
 
 ---
 
-- [2024 Challenges - 8/50 Completed](https://github.com/BeckTimothy/Advent-of-Code/blob/master/2024/README.md)
+- [2024 Challenges - 10/50 Completed](https://github.com/BeckTimothy/Advent-of-Code/blob/master/2024/README.md)
 - 2023 Challenges - 0/50 Completed
 - [2022 Challenges - 26/50 Completed](https://github.com/BeckTimothy/Advent-of-Code/blob/master/2022/README.md)
 - [2021 Challenges - 16/50 Completed](https://github.com/BeckTimothy/Advent-of-Code/blob/master/2021/README.md)

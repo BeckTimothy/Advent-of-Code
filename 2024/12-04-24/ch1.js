@@ -2,7 +2,8 @@ const fs = require('fs');
 let input = fs.readFileSync('./input.txt');
 input = input.toString().trim().split('\r\n');
 input = input.map(x=>x.split(''))
-
+let start = new Date()
+console.log(start)
 let xmasCount = 0;
 for(let y=0;y<input.length;y++){
     for(let x=0;x<input[y].length;x++){
@@ -51,3 +52,4 @@ for(let y=0;y<input.length;y++){
 }
 
 console.log(xmasCount)
+console.log(new Date())
