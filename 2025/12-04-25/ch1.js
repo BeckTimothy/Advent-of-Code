@@ -29,11 +29,11 @@ for(let y=0;y<input.length;y++) {
             if (input[y+1] && input[y+1][x-1] === '@')adjacentRollCount++
             if (input[y+1] && input[y+1][x  ] === '@')adjacentRollCount++
             if (input[y+1] && input[y+1][x+1] === '@')adjacentRollCount++
+
             if (adjacentRollCount < 4) {
                 accessibleRollCount++
             }
         }
-
     }
 }
 console.log(accessibleRollCount)
